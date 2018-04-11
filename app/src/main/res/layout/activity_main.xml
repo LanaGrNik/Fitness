@@ -30,6 +30,11 @@
         android:src="@mipmap/ic_launcher"
         />
 
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fitness title 2"/>
     <ListView
         android:translationX="40dp"
         android:id="@+id/listView"
