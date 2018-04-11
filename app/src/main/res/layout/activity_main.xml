@@ -17,6 +17,12 @@
         android:layout_gravity="top"
         android:background="@color/color1" />
 
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fitness title 2"/>
+
     <ListView
         android:translationX="40dp"
         android:id="@+id/listView"
