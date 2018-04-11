@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String LOG_TAG = "myLogsId";
     int position;
-    
+
 
     String  days[] = {"1 день","2 день","3 день","4 день","5 день","6 день","7 день","8 день","9 день","10 день",
             "11 день","12 день","13 день","14 день","15 день","16 день","17 день","18 день","19 день","20 день",
