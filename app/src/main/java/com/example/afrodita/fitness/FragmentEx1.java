@@ -10,27 +10,54 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Timer;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class FragmentEx1 extends Fragment {
+public class
+FragmentEx1 extends Fragment {
+
+    Integer recieveInfo;
+
+    ArrayList<PhysicalExercise> methods1 = new ArrayList<>();
+    PhysicalExercise element;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_ex_1, null);
 
+        methods1.addAll(ExerciseRepository.getExercise());
+
+
+        Bundle bundle = getArguments();
+
+
+        if (bundle != null) {
+             recieveInfo = bundle.getInt("tag");
+
+             for (int i = 0; i<=methods1.size(); i++){
+                 if (recieveInfo == i){
+                    element = methods1.get(i);
+
+
+
+
+                 }
+             }
+        }
+
 
         TextView tVT = v.findViewById(R.id.tVEx1Title);
-        tVT.setText(R.string.sit_ups);
+        tVT.setText(element.titleId);
 
 
         GifImageView gImageView = v.findViewById(R.id.iVEx1);
-        gImageView.setImageResource(R.drawable.prisad);
+        gImageView.setImageResource(element.icon);
 
         TextView tVDesc = v.findViewById(R.id.tVEx1Description);
-        tVDesc.setText(R.string.sit_ups_description);
+        tVDesc.setText(element.descriptionId);
 
 
        /*  TextView mTimer = (TextView)v.findViewById(R.id.countDownTimer);

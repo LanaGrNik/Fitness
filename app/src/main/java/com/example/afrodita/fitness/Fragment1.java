@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 public class Fragment1 extends Fragment {
 
 
-    ArrayList<PhysicalExercise> methods1 = new ArrayList<>();
+    ArrayList<PhysicalExercise> methods1 = ExerciseRepository.getExercise();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -26,24 +27,32 @@ public class Fragment1 extends Fragment {
 
 
         ListView listInfo = v.findViewById(R.id.listView);
-        Button btnStart = v.findViewById(R.id.buttonStart);
 
-        methods1.addAll(ExerciseRepository.getExercise());
         ExerciseAdapter adapter = new ExerciseAdapter(getContext(), methods1);
         listInfo.setAdapter(adapter);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        listInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                Fragment fragment = new FragmentEx1();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, fragment)
-                        .commit();
+                                                Fragment fragment = new FragmentEx1();
+                                                Bundle bundle = new Bundle();
+                                                bundle.putInt("tag", position);
+                                                fragment.setArguments(bundle);
 
-            }
-        });
+
+                                                getActivity().getSupportFragmentManager()
+                                                        .beginTransaction()
+                                                        .replace(R.id.frame_layout, fragment)
+                                                        .addToBackStack(null)
+                                                        .commit();
+
+                                                }
+                                        }
+
+        );
+
+
 
 
         return v;
