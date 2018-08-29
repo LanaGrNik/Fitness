@@ -19,7 +19,7 @@
             tools:text="This is Title" />
 
         <TextView
-            android:id="@+id/textview_description"
+            android:id="@+id/textview_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="This is Description"
