@@ -29,5 +29,7 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
     implementation 'com.felipecsl:gifimageview:2.2.0'
     implementation 'com.github.markushi:circlebutton:1.1'
+    implementation 'com.google.dagger:dagger:2.13'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
 
 }

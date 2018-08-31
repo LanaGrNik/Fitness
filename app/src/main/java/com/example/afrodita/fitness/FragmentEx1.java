@@ -1,6 +1,7 @@
 package com.example.afrodita.fitness;
 
 
+import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 
 
+import javax.inject.Inject;
+
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -32,12 +35,22 @@ FragmentEx1 extends Fragment {
     ArrayList<PhysicalExercise> methods1 = new ArrayList<>();
     PhysicalExercise element;
     TextView mTimer;
-
+    @Inject
+    Context ct;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_ex_1, null);
+
+
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((FitnessApplication) getActivity().getApplication()).getComponent().inject(this);
 
         methods1.addAll(ExerciseRepository.getExercise());
 
@@ -46,36 +59,36 @@ FragmentEx1 extends Fragment {
 
 
         if (bundle != null) {
-             recieveInfo = bundle.getInt("tag");
+            recieveInfo = bundle.getInt("tag");
 
-             for (int i = 0; i<=methods1.size(); i++){
-                 if (recieveInfo == i){
+            for (int i = 0; i<=methods1.size(); i++){
+                if (recieveInfo == i){
                     element = methods1.get(i);
 
 
 
 
-                 }
-             }
+                }
+            }
         }
 
 
-        TextView tVT = v.findViewById(R.id.tVEx1Title);
+        TextView tVT = view.findViewById(R.id.tVEx1Title);
         tVT.setText(element.titleId);
 
 
-   // final GifImageView gImageView = v.findViewById(R.id.iVEx1);
-  //  gImageView.setImageResource(element.icon);
+        // final GifImageView gImageView = v.findViewById(R.id.iVEx1);
+        //  gImageView.setImageResource(element.icon);
 
 
-         TextView tVDesc = v.findViewById(R.id.tVEx1Description);
+        TextView tVDesc = view.findViewById(R.id.tVEx1Description);
         tVDesc.setText(element.descriptionId);
 
-       final GifSwitcher gifSwitcher = v.findViewById(R.id.iVExGif);
-       gifSwitcher.setGifResourse(element.icon);
+        final GifSwitcher gifSwitcher = view.findViewById(R.id.iVExGif);
+        gifSwitcher.setGifResourse(element.icon);
 
 
-        mTimer = v.findViewById(R.id.countDownTimer);
+        mTimer = view.findViewById(R.id.countDownTimer);
 
         //Создаем таймер обратного отсчета на 20 секунд с шагом отсчета
         //в 1 секунду (задаем значения в миллисекундах):
@@ -93,8 +106,8 @@ FragmentEx1 extends Fragment {
             //Задаем действия после завершения отсчета
             public void onFinish() {
 
-               gifSwitcher.toggleAnimate(true);
-               mTimer.setText(null);
+                gifSwitcher.toggleAnimate(true);
+                mTimer.setText(null);
 
 
 
@@ -104,6 +117,6 @@ FragmentEx1 extends Fragment {
                 .start();
 
 
-        return v;
+
     }
 }
