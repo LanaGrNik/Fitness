@@ -47,12 +47,10 @@ public class Fragment1 extends Fragment {
                                                         .addToBackStack(null)
                                                         .commit();
 
-                                                }
+                                            }
                                         }
 
         );
-
-
 
 
         return v;

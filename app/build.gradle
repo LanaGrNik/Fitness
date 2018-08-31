@@ -27,6 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:26.1.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+    implementation 'com.felipecsl:gifimageview:2.2.0'
     implementation 'com.github.markushi:circlebutton:1.1'
 
 }

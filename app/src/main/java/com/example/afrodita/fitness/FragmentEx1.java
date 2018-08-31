@@ -1,5 +1,8 @@
 package com.example.afrodita.fitness;
 
+
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -8,12 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+
+
 
 import java.util.ArrayList;
 import java.util.Timer;
 
+
+import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
+
 
 public class
 FragmentEx1 extends Fragment {
@@ -22,6 +31,8 @@ FragmentEx1 extends Fragment {
 
     ArrayList<PhysicalExercise> methods1 = new ArrayList<>();
     PhysicalExercise element;
+    TextView mTimer;
+
 
     @Nullable
     @Override
@@ -53,31 +64,45 @@ FragmentEx1 extends Fragment {
         tVT.setText(element.titleId);
 
 
-        GifImageView gImageView = v.findViewById(R.id.iVEx1);
-        gImageView.setImageResource(element.icon);
+   // final GifImageView gImageView = v.findViewById(R.id.iVEx1);
+  //  gImageView.setImageResource(element.icon);
 
-        TextView tVDesc = v.findViewById(R.id.tVEx1Description);
+
+         TextView tVDesc = v.findViewById(R.id.tVEx1Description);
         tVDesc.setText(element.descriptionId);
 
+       final GifSwitcher gifSwitcher = v.findViewById(R.id.iVExGif);
+       gifSwitcher.setGifResourse(element.icon);
 
-       /*  TextView mTimer = (TextView)v.findViewById(R.id.countDownTimer);
+
+        mTimer = v.findViewById(R.id.countDownTimer);
 
         //Создаем таймер обратного отсчета на 20 секунд с шагом отсчета
         //в 1 секунду (задаем значения в миллисекундах):
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(10000, 1000) {
 
             //Здесь обновляем текст счетчика обратного отсчета с каждой секундой
             public void onTick(long millisUntilFinished) {
-                mTimer.setText("Осталось: "
+                mTimer.setText("Приготовтесь: "
                         + millisUntilFinished / 1000);
+
+
+
+
             }
-            //Задаем действия после завершения отсчета (высвечиваем надпись "Бабах!"):
+            //Задаем действия после завершения отсчета
             public void onFinish() {
-                mTimer.setText("Бабах!");
+
+               gifSwitcher.toggleAnimate(true);
+               mTimer.setText(null);
+
+
+
+
             }
         }
                 .start();
-    }*/
+
 
         return v;
     }
