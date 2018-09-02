@@ -16,12 +16,21 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 public class InfoActivity extends AppCompatActivity {
+    @Inject
+    ExerciseRepository exerciseRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        ((FitnessApplication)getApplication()).getComponent().inject(this);
+
+       int day = getIntent().getIntExtra("day",1);
+       exerciseRepository.replaceList(day);
 
 
         Fragment fragment = new Fragment1();

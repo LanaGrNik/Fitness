@@ -6,6 +6,8 @@
     android:orientation="vertical">
 
 
+
+
     <TextView
 
         android:id="@+id/tVEx1Title"
@@ -42,7 +44,8 @@
         android:src="@drawable/ic_arrow_forward"
         app:cb_color="#99CC00"
         app:cb_pressedRingWidth="8dip"
-        android:layout_gravity="right"/>
+        android:layout_gravity="right"
+        />
 
 
 </LinearLayout>

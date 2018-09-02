@@ -16,7 +16,6 @@ import android.widget.MediaController;
 import android.widget.TextView;
 
 
-
 import java.util.ArrayList;
 import java.util.Timer;
 
@@ -32,11 +31,13 @@ FragmentEx1 extends Fragment {
 
     Integer recieveInfo;
 
-    ArrayList<PhysicalExercise> methods1 = new ArrayList<>();
     PhysicalExercise element;
     TextView mTimer;
     @Inject
     Context ct;
+    @Inject
+    ArrayList<PhysicalExercise> ph;
+
 
     @Nullable
     @Override
@@ -52,23 +53,20 @@ FragmentEx1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ((FitnessApplication) getActivity().getApplication()).getComponent().inject(this);
 
-        methods1.addAll(ExerciseRepository.getExercise());
-
-
         Bundle bundle = getArguments();
 
 
         if (bundle != null) {
             recieveInfo = bundle.getInt("tag");
 
-            for (int i = 0; i<=methods1.size(); i++){
+            for (int i = 0; i <= ph.size(); i++) {
                 if (recieveInfo == i){
-                    element = methods1.get(i);
+                    element = ph.get(i);
+
+                    }
 
 
 
-
-                }
             }
         }
 
@@ -100,9 +98,8 @@ FragmentEx1 extends Fragment {
                         + millisUntilFinished / 1000);
 
 
-
-
             }
+
             //Задаем действия после завершения отсчета
             public void onFinish() {
 
@@ -110,12 +107,9 @@ FragmentEx1 extends Fragment {
                 mTimer.setText(null);
 
 
-
-
             }
         }
                 .start();
-
 
 
     }

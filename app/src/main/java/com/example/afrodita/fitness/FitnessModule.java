@@ -2,6 +2,8 @@ package com.example.afrodita.fitness;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -11,6 +13,7 @@ import dagger.Provides;
 public class FitnessModule {
 
     Context context;
+    ArrayList<PhysicalExercise> ph = new ArrayList<PhysicalExercise>();
 
     public FitnessModule(Context context){
         this.context = context;
@@ -22,4 +25,10 @@ public class FitnessModule {
         return context;
     }
 
+    @Singleton
+    @Provides
+    public ArrayList<PhysicalExercise> providePh() {
+     //   ph.addAll(ExerciseRepository.getExercise());
+        return ph;
+    }
 }
