@@ -1,4 +1,4 @@
-package com.example.afrodita.fitness;
+package com.example.afrodita.fitness.mvp.info;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,6 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.afrodita.fitness.ExerciseRepository;
+import com.example.afrodita.fitness.FitnessApplication;
+import com.example.afrodita.fitness.Fragment1;
+import com.example.afrodita.fitness.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

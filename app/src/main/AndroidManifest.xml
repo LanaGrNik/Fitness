@@ -13,14 +13,14 @@
         android:theme="@style/AppTheme"
         android:name=".FitnessApplication">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".mvp.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".mvp.info.InfoActivity"></activity>
     </application>
 
 </manifest>

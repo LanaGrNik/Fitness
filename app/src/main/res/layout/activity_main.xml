@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.afrodita.fitness.MainActivity"
+    tools:context="com.example.afrodita.fitness.mvp.main.MainActivity"
     android:background="@drawable/image_black"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
 
     <TextView
@@ -31,11 +32,10 @@
     <GridLayout
 
         android:id="@+id/grid_layout_days"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnCount="5"
-        android:rowCount="6"
-        android:layout_gravity="center"
+
 
        />
 

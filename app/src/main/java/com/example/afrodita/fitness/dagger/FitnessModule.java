@@ -1,6 +1,8 @@
-package com.example.afrodita.fitness;
+package com.example.afrodita.fitness.dagger;
 
 import android.content.Context;
+
+import com.example.afrodita.fitness.PhysicalExercise;
 
 import java.util.ArrayList;
 

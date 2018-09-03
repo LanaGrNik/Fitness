@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="54dp"
+    android:layout_height="54dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_green_circle"
+    android:gravity="center"
+    android:layout_margin="@dimen/content_margin">
+
+    <TextView
+        android:id="@+id/tvCircleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="1"/>
+
+
+</RelativeLayout>
