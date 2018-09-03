@@ -3,7 +3,9 @@ package com.example.afrodita.fitness;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class ExerciseRepository {
 
     PhysicalExercise phEx1 = new PhysicalExercise(R.string.sit_ups, R.string.count3, R.drawable.prisad, R.string.sit_ups_description);
@@ -15,11 +17,15 @@ public class ExerciseRepository {
     PhysicalExercise phEx7 = new PhysicalExercise(R.string.hull_lifting, R.string.count3, R.drawable.bool, R.string.hull_lifting_description);
     PhysicalExercise phEx8 = new PhysicalExercise(R.string.rainbow_exercise, R.string.count2, R.drawable.radyga, R.string.rainbow_exercise_description);
 
-    ArrayList<PhysicalExercise> exercisesList;
+    ArrayList<PhysicalExercise> exercisesList = new ArrayList<>();
 
     @Inject
-    public ExerciseRepository(ArrayList<PhysicalExercise> exercisesList) {
-        this.exercisesList = exercisesList;
+    public ExerciseRepository() {
+
+    }
+
+    public ArrayList<PhysicalExercise> getExercisesList() {
+        return exercisesList;
     }
 
     public void replaceList(int day) {

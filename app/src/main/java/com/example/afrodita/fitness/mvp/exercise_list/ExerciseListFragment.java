@@ -1,7 +1,6 @@
-package com.example.afrodita.fitness;
+package com.example.afrodita.fitness.mvp.exercise_list;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -9,30 +8,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
+
+import com.example.afrodita.fitness.ExerciseAdapter;
+import com.example.afrodita.fitness.mvp.excercise.ExerciseFragment;
+import com.example.afrodita.fitness.FitnessApplication;
+import com.example.afrodita.fitness.PhysicalExercise;
+import com.example.afrodita.fitness.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.inject.Inject;
 
 
-public class Fragment1 extends Fragment {
+public class ExerciseListFragment extends Fragment implements ExerciseListContract.View {
+
 
     @Inject
-    ArrayList<PhysicalExercise> methods;
-
+    ExerciseListPresenter presenter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment1, null);
+        View v = inflater.inflate(R.layout.exercise_list_fragment, null);
 
         ((FitnessApplication) getActivity().getApplication()).getComponent().inject(this);
+        presenter.onAttach(this);
         ListView listInfo = v.findViewById(R.id.listView);
+        ArrayList<PhysicalExercise> methods = presenter.loadExerciseList();
+
 
         if (methods.isEmpty()){
             new AlertDialog.Builder(getContext())
@@ -53,9 +57,9 @@ public class Fragment1 extends Fragment {
                                             @Override
                                             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                                                Fragment fragment = new FragmentEx1();
+                                                Fragment fragment = new ExerciseFragment();
                                                 Bundle bundle = new Bundle();
-                                                bundle.putInt("tag", position);
+                                                bundle.putInt("position", position);
                                                 fragment.setArguments(bundle);
 
 

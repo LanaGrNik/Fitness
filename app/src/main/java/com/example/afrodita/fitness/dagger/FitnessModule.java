@@ -15,7 +15,7 @@ import dagger.Provides;
 public class FitnessModule {
 
     Context context;
-    ArrayList<PhysicalExercise> ph = new ArrayList<PhysicalExercise>();
+  //  ArrayList<PhysicalExercise> ph = new ArrayList<PhysicalExercise>();
 
     public FitnessModule(Context context){
         this.context = context;
@@ -27,10 +27,10 @@ public class FitnessModule {
         return context;
     }
 
-    @Singleton
+ /*   @Singleton
     @Provides
     public ArrayList<PhysicalExercise> providePh() {
      //   ph.addAll(ExerciseRepository.getExercise());
         return ph;
-    }
+    }*/
 }

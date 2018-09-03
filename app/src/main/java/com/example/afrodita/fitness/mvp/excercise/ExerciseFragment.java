@@ -1,9 +1,7 @@
-package com.example.afrodita.fitness;
+package com.example.afrodita.fitness.mvp.excercise;
 
 
 import android.content.Context;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -11,38 +9,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
 
 
+import com.example.afrodita.fitness.FitnessApplication;
+import com.example.afrodita.fitness.GifSwitcher;
+import com.example.afrodita.fitness.PhysicalExercise;
+import com.example.afrodita.fitness.R;
+
 import java.util.ArrayList;
-import java.util.Timer;
 
 
 import javax.inject.Inject;
 
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
 
+public class ExerciseFragment extends Fragment implements ExerciseContract.View {
 
-public class
-FragmentEx1 extends Fragment {
-
-    Integer recieveInfo;
+    @Inject
+    ExercisePresenter presenter;
 
     PhysicalExercise element;
     TextView mTimer;
-    @Inject
-    Context ct;
-    @Inject
-    ArrayList<PhysicalExercise> ph;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_ex_1, null);
+        View v = inflater.inflate(R.layout.exercise_fragment, null);
 
 
         return v;
@@ -53,31 +46,19 @@ FragmentEx1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ((FitnessApplication) getActivity().getApplication()).getComponent().inject(this);
 
+        presenter.onAttach(this);
+
         Bundle bundle = getArguments();
 
 
         if (bundle != null) {
-            recieveInfo = bundle.getInt("tag");
-
-            for (int i = 0; i <= ph.size(); i++) {
-                if (recieveInfo == i){
-                    element = ph.get(i);
-
-                    }
-
-
-
-            }
+            Integer position = bundle.getInt("position");
+            element = presenter.findByPosition(position);
         }
 
 
         TextView tVT = view.findViewById(R.id.tVEx1Title);
         tVT.setText(element.titleId);
-
-
-        // final GifImageView gImageView = v.findViewById(R.id.iVEx1);
-        //  gImageView.setImageResource(element.icon);
-
 
         TextView tVDesc = view.findViewById(R.id.tVEx1Description);
         tVDesc.setText(element.descriptionId);

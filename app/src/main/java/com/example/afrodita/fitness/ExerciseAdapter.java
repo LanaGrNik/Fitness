@@ -17,7 +17,7 @@ public class ExerciseAdapter extends BaseAdapter {
     LayoutInflater lInflater;
     ArrayList<PhysicalExercise> methods = new ArrayList<>();
 
-    ExerciseAdapter(Context context, ArrayList<PhysicalExercise> methods) {
+    public ExerciseAdapter(Context context, ArrayList<PhysicalExercise> methods) {
         this.context = context;
         this.methods.addAll(methods);
         lInflater = LayoutInflater.from(context);
