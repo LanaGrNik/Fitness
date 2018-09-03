@@ -1,7 +1,6 @@
 package com.example.afrodita.fitness;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -36,9 +35,9 @@ public class GifSwitcher extends LinearLayout {
     LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.gif_switcher, this);
 
-        imageView = findViewById(R.id.imageViewEx);
+        imageView = findViewById(R.id.ivStatic);
 
-        gifImageView = findViewById(R.id.iVEx1);
+        gifImageView = findViewById(R.id.ivGif);
     }
 
     public void setGifResourse(@DrawableRes int resId) {

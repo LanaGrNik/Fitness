@@ -1,7 +1,6 @@
 package com.example.afrodita.fitness.mvp.excercise;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -17,8 +16,6 @@ import com.example.afrodita.fitness.GifSwitcher;
 import com.example.afrodita.fitness.PhysicalExercise;
 import com.example.afrodita.fitness.R;
 
-import java.util.ArrayList;
-
 
 import javax.inject.Inject;
 
@@ -31,14 +28,10 @@ public class ExerciseFragment extends Fragment implements ExerciseContract.View 
     PhysicalExercise element;
     TextView mTimer;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.exercise_fragment, null);
-
-
-        return v;
+        return inflater.inflate(R.layout.exercise_fragment, null);
     }
 
     @Override
@@ -50,48 +43,36 @@ public class ExerciseFragment extends Fragment implements ExerciseContract.View 
 
         Bundle bundle = getArguments();
 
-
         if (bundle != null) {
             Integer position = bundle.getInt("position");
             element = presenter.findByPosition(position);
         }
 
-
-        TextView tVT = view.findViewById(R.id.tVEx1Title);
+        TextView tVT = view.findViewById(R.id.tVExTitle);
         tVT.setText(element.titleId);
 
-        TextView tVDesc = view.findViewById(R.id.tVEx1Description);
+        TextView tVDesc = view.findViewById(R.id.tVExDescription);
         tVDesc.setText(element.descriptionId);
 
         final GifSwitcher gifSwitcher = view.findViewById(R.id.iVExGif);
         gifSwitcher.setGifResourse(element.icon);
 
-
         mTimer = view.findViewById(R.id.countDownTimer);
 
-        //Создаем таймер обратного отсчета на 20 секунд с шагом отсчета
-        //в 1 секунду (задаем значения в миллисекундах):
         new CountDownTimer(10000, 1000) {
 
-            //Здесь обновляем текст счетчика обратного отсчета с каждой секундой
             public void onTick(long millisUntilFinished) {
                 mTimer.setText("Приготовтесь: "
                         + millisUntilFinished / 1000);
-
-
             }
 
-            //Задаем действия после завершения отсчета
             public void onFinish() {
-
                 gifSwitcher.toggleAnimate(true);
                 mTimer.setText(null);
-
 
             }
         }
                 .start();
-
 
     }
 }

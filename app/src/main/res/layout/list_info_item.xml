@@ -12,14 +12,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textview_title"
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             tools:text="This is Title" />
 
         <TextView
-            android:id="@+id/textview_count"
+            android:id="@+id/tvCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="This is Description"
@@ -27,7 +27,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageview_icon"
+        android:id="@+id/ivIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_weight="1"

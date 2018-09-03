@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 public class ExerciseListPresenter implements ExerciseListContract.Presenter {
 
-
     ExerciseListContract.View view;
     ExerciseRepository exerciseRepository;
 
@@ -20,20 +19,11 @@ public class ExerciseListPresenter implements ExerciseListContract.Presenter {
 
     @Override
     public void onAttach(ExerciseListContract.View view) {
-
         this.view = view;
-
         }
 
     @Override
     public ArrayList<PhysicalExercise> loadExerciseList() {
-
         return exerciseRepository.getExercisesList();
-
-
-
-
     }
-
-
 }

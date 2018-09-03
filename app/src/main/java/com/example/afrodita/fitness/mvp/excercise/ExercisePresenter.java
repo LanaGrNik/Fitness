@@ -16,7 +16,6 @@ public class ExercisePresenter implements ExerciseContract.Presenter {
         this.exerciseRepository = exerciseRepository;
     }
 
-
     @Override
     public void onAttach(ExerciseContract.View view) {
         this.view = view;
@@ -24,8 +23,6 @@ public class ExercisePresenter implements ExerciseContract.Presenter {
 
     @Override
     public PhysicalExercise findByPosition(int position) {
-
         return exerciseRepository.getExercisesList().get(position);
-
     }
 }

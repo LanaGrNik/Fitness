@@ -15,7 +15,6 @@ public class InfoActivity extends AppCompatActivity implements InfoContract.View
     @Inject
     InfoPresenter presenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +27,8 @@ public class InfoActivity extends AppCompatActivity implements InfoContract.View
         presenter.replaceList(day);
     }
 
-
     @Override
     public void openExerciseList() {
-
         Fragment fragment = new ExerciseListFragment();
         getSupportFragmentManager()
                 .beginTransaction()

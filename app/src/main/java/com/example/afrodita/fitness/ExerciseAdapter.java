@@ -6,11 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class ExerciseAdapter extends BaseAdapter {
     Context context;
@@ -42,13 +40,13 @@ public class ExerciseAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup parent) {
         PhysicalExercise physicalExercise = getItem(i);
         view = lInflater.inflate(R.layout.list_info_item, parent, false);
-        TextView titleText = view.findViewById(R.id.textview_title);
+        TextView titleText = view.findViewById(R.id.tvTitle);
         titleText.setText(physicalExercise.titleId);
 
-        TextView countText = view.findViewById(R.id.textview_count);
+        TextView countText = view.findViewById(R.id.tvCount);
         countText.setText(physicalExercise.countId);
 
-        ImageView imageView = view.findViewById(R.id.imageview_icon);
+        ImageView imageView = view.findViewById(R.id.ivIcon);
         imageView.setImageResource(physicalExercise.icon);
 
 

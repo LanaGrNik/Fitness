@@ -23,7 +23,6 @@ import javax.inject.Inject;
 
 public class ExerciseListFragment extends Fragment implements ExerciseListContract.View {
 
-
     @Inject
     ExerciseListPresenter presenter;
 
@@ -37,8 +36,7 @@ public class ExerciseListFragment extends Fragment implements ExerciseListContra
         ListView listInfo = v.findViewById(R.id.listView);
         ArrayList<PhysicalExercise> methods = presenter.loadExerciseList();
 
-
-        if (methods.isEmpty()){
+        if (methods.isEmpty()) {
             new AlertDialog.Builder(getContext())
                     .setMessage("Отдохните!")
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -53,31 +51,27 @@ public class ExerciseListFragment extends Fragment implements ExerciseListContra
         ExerciseAdapter adapter = new ExerciseAdapter(getContext(), methods);
         listInfo.setAdapter(adapter);
 
-        listInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                            @Override
-                                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        listInfo.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        Fragment fragment = new ExerciseFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("position", position);
+                        fragment.setArguments(bundle);
 
-                                                Fragment fragment = new ExerciseFragment();
-                                                Bundle bundle = new Bundle();
-                                                bundle.putInt("position", position);
-                                                fragment.setArguments(bundle);
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.frame_layout, fragment)
+                                .addToBackStack(null)
+                                .commit();
 
-
-                                                getActivity().getSupportFragmentManager()
-                                                        .beginTransaction()
-                                                        .replace(R.id.frame_layout, fragment)
-                                                        .addToBackStack(null)
-                                                        .commit();
-
-                                            }
-                                        }
+                    }
+                }
 
         );
 
-
         return v;
 
-
     }
-
 }

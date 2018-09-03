@@ -15,24 +15,18 @@ public class InfoPresenter implements InfoContract.Presenter{
 
     }
 
-
     @Override
     public void onAttach(InfoContract.View view) {
         this.view = view;
-
-    }
+        }
 
     @Override
     public void replaceList(int day) {
         exerciseRepository.replaceList(day);
         view.openExerciseList();
-
-    }
+        }
 
     @Override
     public void onDetach() {
-
-    }
-
-
+        }
 }
